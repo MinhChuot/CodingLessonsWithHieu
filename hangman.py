@@ -10,7 +10,7 @@ DoNotRepeat=[]
 j=0
 gameOver=5 	#should be 10
 
-for w in range(22):
+for w in range(24):
 	guess=input('Guess a letter or the word: ') ##'Guess a letter or submit "exit" if you want to close the game: '
 	if guess=="exit": 	#exit button
 		break
@@ -41,4 +41,3 @@ for w in range(22):
 			break
 		else:
 			print(f"Guess again. Number of guesses left: {gameOver-j}")	##
-	

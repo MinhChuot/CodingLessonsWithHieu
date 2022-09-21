@@ -1,0 +1,99 @@
+# a=5
+# print(a)
+# b=2
+# print(a==b)
+# c=7
+# if a==5 or b==2 or c==9:
+# 	print('hello world')
+# else:
+# 	print('check your math')
+# for num in [1,2,3,4,5]:
+# 	print(num+5)
+# x=input()
+# print('your number is',1+int(x))
+##################################################################################################################################
+# answer='agamemnon'
+# answerAsList = ['a' , 'g' ,'a' , 'm' , 'e' ,'m' , 'n' , 'o', 'n']
+answer=7355608
+answerAsList = [7 , 3 ,5 , 5 , 6 ,0 , 8 ]
+#take input, if input is part of answer, display input in correct place, next turn
+showAnswer=[]
+j=0
+# while True: #??? why did it rmb. Probably helps to WATCH SoME VIDEOS ON WHILE LOOPS
+# for w in range(2):
+for w in range(3):
+# for w in range(11):
+	guess=int(input('Call out a number from 0 to 9. '))
+	# if guess==-1:
+	# 	break
+	print(guess) 
+	if guess in answerAsList:
+		print(guess, 'is correct')
+		for i in range(len(answerAsList)):
+			if guess==answerAsList[i]: #still in first guess
+				showAnswer.append(guess)
+			else:
+				showAnswer.append("")
+			# showAnswer.append(i)
+			print(showAnswer) #cool tech
+	# it was clean everytime. didnt rmb
+
+
+	# if guess == 'a' or 'g' or 'm' or 'e' or 'n' or 'o':
+
+	# if i==0 and guess==7 or i==3 or i==5 or i==6 or i==0 or i==8:
+
+	#cycle through the list, if the position on the cycle matches guess, then map it on to this other list
+	#if guess matches with letter in THE CURRENT POSITION of the list BEING EVALUATED by the For Loop, then print guess,
+	# if not then print a blank space
+	else:
+		for i in range(len(answerAsList)):
+			showAnswer.append("")
+			print(showAnswer)
+		j=+1 	#the only piece of new logic is j+=1 which is interesting. try to get that working with the while loop, 
+				#instead of by copying pasting code
+		print("Guess again. Number of guesses left:", 10-j )
+		###################################################################################################################
+	# 	guess=int(input('Call out a number from 0 to 9. '))
+	# 	# if guess==-1:
+	# 	# 	break
+	# 	print(guess) 
+	# 	if guess in answerAsList:
+	# 		print(guess, 'is correct')
+	# 		for i in range(len(answerAsList)):
+	# 			if guess==answerAsList[i]: #still in first guess
+	# 				showAnswer.append(guess)
+	# 			else:
+	# 				showAnswer.append("")
+	# 			# showAnswer.append(i)
+	# 			print(showAnswer) 
+	# # if guess == 'a' or 'g' or 'm' or 'e' or 'n' or 'o':
+	# # if i==0 and guess==7 or i==3 or i==5 or i==6 or i==0 or i==8:
+	# 	else:
+	# 		for i in range(len(answerAsList)):
+	# 			showAnswer.append("")
+	# 			print(showAnswer)
+	# 		j=+1
+	# 		print("Guess again. Number of guesses left:", 10-j )
+###################################################################################################################
+	# 		guess=int(input('Call out a number from 0 to 9. '))
+	# 		# if guess==-1:
+	# 		# 	break
+	# 		print(guess) 
+	# 		if guess in answerAsList:
+	# 			print(guess, 'is correct')
+	# 			for i in range(len(answerAsList)):
+	# 				if guess==answerAsList[i]: #still in first guess
+	# 					showAnswer.append(guess)
+	# 				else:
+	# 					showAnswer.append("")
+	# 				# showAnswer.append(i)
+	# 				print(showAnswer) 
+	# # if guess == 'a' or 'g' or 'm' or 'e' or 'n' or 'o':
+	# # if i==0 and guess==7 or i==3 or i==5 or i==6 or i==0 or i==8:
+	# 		else:
+	# 			for i in range(len(answerAsList)):
+	# 				showAnswer.append("")
+	# 				print(showAnswer)
+	# 			j=+1
+	# 			print("Guess again. Number of guesses left:", 10-j )

@@ -25,3 +25,5 @@ shouldBeIncorrect=[
 #shouldBeIncorrect->'no'
 #rules of sudoku:
 #	- numbers can't be in same column/row/box
+#	- has to have 1-9 without repeating any number
+toAssess=shouldBeCorrect

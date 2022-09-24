@@ -22,8 +22,8 @@ while True:
 	if guess in answerAsList: 		#if right guess made
 		print(guess, 'is correct') 	
 		for i in range(len(answerAsList)):	#'cos we need to CHECK ALL SLOTS in the list
-			if guess==answerAsList[i]: 		#finding right place for right guess in 1 list
-				showAnswer[i]=guess 		#putting the guess to the same slot in a different, same-length list
+			if guess==answerAsList[i]: 		#if guess is the same as inside one or more slot/s as we pass by the list
+				showAnswer[i]=guess 		#put the guess in the same slot/s in a different, same-length list
 		print(' '.join(showAnswer)) 	##joins said list elements with space and replace empty elements with underscore, and print
 		if showAnswer==answerAsList:	#if all right guesses are made, aka. showAnswer has been filled up correctly
 			print("Congratulations. You won!")

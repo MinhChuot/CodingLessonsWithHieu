@@ -1,21 +1,18 @@
 answerAsList = []
 showAnswer=[]
 
-DoNotRepeat=[]
+doNotRepeat=[]
 
-j=0
+numMistakes=0 
 gameOver=10
 
+answer=input('Write down your hangman guessword: ')
+answerAsList=list(answer)
+for i in range(len(answerAsList)):
+	showAnswer.append("_")
+print(f"Your hangman guessword is '{answer}'. We may begin hangman")
+#TODO: handle spaces in the answer, e.g. "long live the king"
 while True:
-	answer=(input('Write down your hangman guessword: '))
-	for letter in answer:
-		answerAsList.append(letter)
-	for i in range(len(answerAsList)):
-		showAnswer.append("_")
-	print(f"Your hangman guessword is {''.join(answerAsList)}. We may begin hangman")
-	break
-
-for w in range(25):
 	guess=input('Guess a letter or the word, or submit "exit" if you want to close the game:  ') 
 	if guess=="exit":
 		break
@@ -32,13 +29,13 @@ for w in range(25):
 			print("Congratulations. You won!")
 			break
 	else: #if wrong guess made
-		if guess in DoNotRepeat:	#if it's wrong and also same as a previous guess (i.e. is in DoNotRepeat)
+		if guess in doNotRepeat:	#if it's wrong and also same as a previous guess (i.e. is in doNotRepeat)
 			print("You've already made this guess. Make a different guess.")
 		else:	#if it's wrong and not the same as a previous guess
-			DoNotRepeat.append(guess) 	
-			j+=1
-			if j==gameOver:
+			doNotRepeat.append(guess) 	
+			numMistakes+=1
+			if numMistakes==gameOver:
 				print(f"Game over. You've made {gameOver} wrong guesses")	
 				break
 			else:
-				print(f"Guess again. Number of guesses left: {gameOver-j}")	
+				print(f"Guess again. Number of guesses left: {gameOver-numMistakes}")	

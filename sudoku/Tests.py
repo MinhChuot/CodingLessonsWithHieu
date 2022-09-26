@@ -45,3 +45,30 @@ for i in range(len(toAssess)):              # "for 9 times, and i goes 0 to 8"
 # 2 of the same number is in this row
 # 2 of the same number is in this row
 # 2 of the same number is in this row
+#################################################################
+
+
+# for row in range(9):  
+#   for col in range(9):         #row is 0. 
+#     if toAssess[row][col] in checkedNum:  
+#       print("2 of the same number is in this row")
+#     elif toAssess[row][col] in uncheckedNum:    #why is uncheckedNum still here?
+#       print(toAssess[row][col])
+#       checkedNum.append(toAssess[row][col])
+#       uncheckedNum.pop(toAssess[row][col]-1)
+# #     IndexError: pop index out of range
+#       print(checkedNum) # printed 5, from [0][0]
+#       print(uncheckedNum)
+#   checkedNum=[]
+
+# Output:  
+# $ python sudoku/main.py
+# 5
+# [5]
+# [1, 2, 3, 4, 6, 7, 8, 9]
+# 3
+# [5, 3]
+# [1, 2, 4, 6, 7, 8, 9]
+# 4
+# [5, 3, 4]
+# [1, 2, 4, 7, 8, 9]

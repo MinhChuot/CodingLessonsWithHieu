@@ -47,31 +47,24 @@ shouldBeIncorrect=[
 
 toAssess=shouldBeCorrect
 checkedNum=[]   #number we checked already can't appear again, so if it's checked any more times after the 1st, it's wrong
-uncheckedNum=[1,2,3,4,5,6,7,8,9]
+# uncheckedNum=[1,2,3,4,5,6,7,8,9]
 
-for i in range(len(toAssess)):              # "for 9 times, and i goes 0 to 8"
-  for j in range(len(toAssess[i])):         #i is 0. "for 9 times, j goes 0 to 8" 
-    if toAssess[i][j] in checkedNum:  
+for row in range(9):              # "for 9 times, and row goes 0 to 8"
+  for col in range(9):         #row is 0. "for 9 times, col goes 0 to 8" 
+    if toAssess[row][col] in checkedNum:  
       print("2 of the same number is in this row")
-    elif toAssess[i][j] in uncheckedNum:      #j is 0, 'if this number is anywhere 1-9'.  [0][0] is 5, so toAssess[i][j] is 5 for now. 
-      checkedNum.append(toAssess[i][j])
-      uncheckedNum.pop(toAssess[i][j]-1)
+    elif toAssess[row][col] in uncheckedNum:    #why is uncheckedNum still here?
+      checkedNum.append(toAssess[row][col])
 #     IndexError: pop index out of range
       print(checkedNum) # printed 5, from [0][0]
-      print(uncheckedNum)
+      # print(uncheckedNum)
+  checkedNum=[]
 
-# only popped once for first number, ie [0][0]. 
-# 5
-# [1, 2, 3, 4, 6, 7, 8, 9]
-# because TypeError on line 54
+#TODO: have not done first half of L31 "has to have 1-9", so do it. First things first
+#TODO: do columns next
 
 #   print(checkedNum)     # printed 3, from [0][1] or [3][8] or [8][0]?
 # print(checkedNum)       # printed 6, from [i?][j?]
 
 # ******* CLEAR checkedNum every time j GETS TO 8 *******
 # ******* REFILL uncheckedNum every time j GETS TO 8 *******
-#########################################################################################
-# numberBox=[]
-# for a in range(9):
-#   numberBox.append(a+1) #forgetting the objective and thinking we have to reproduce the lists
-# popping and catching may help

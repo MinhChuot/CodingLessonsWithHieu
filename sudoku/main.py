@@ -54,6 +54,8 @@ noZero=[1,2,3,4,5,6,7,8,9]
 # ***Checking rows***
 for row in range(9):  
   for col in range(9):         #row is 0. 
+    if toAssess[row][col] == 0:
+      print("The digit is not an integer from 1 to 9, and so it is invalid")
     if toAssess[row][col] in checkedNum:
       print("2 of the same number is in this row")
       break
@@ -79,29 +81,31 @@ col7=[]
 col8=[]
 col9=[]
 invertedShouldBeCorrect=[]
+
 # invertedShouldBeCorrect=[
 # [],[],[],[],[],[],[],[],[]
 # ]     This is in case I need to append during the loop instead of having it as lines in the script 
-for i in range(9):
-  for j in range(9):
-    if j==0:
-      col1.append(toAssess[i][j])
-    elif j==1:
-      col2.append(toAssess[i][j])
-    elif j==2:
-      col3.append(toAssess[i][j])
-    elif j==3:
-      col4.append(toAssess[i][j])
-    elif j==4:
-      col5.append(toAssess[i][j])
-    elif j==5:
-      col6.append(toAssess[i][j])
-    elif j==6:
-      col7.append(toAssess[i][j])
-    elif j==7:
-      col8.append(toAssess[i][j])
-    elif j==8:
-      col9.append(toAssess[i][j])
+
+for row in range(9):
+  for col in range(9):
+    if col==0:
+      col1.append(toAssess[row][col])
+    elif col==1:
+      col2.append(toAssess[row][col])
+    elif col==2:
+      col3.append(toAssess[row][col])
+    elif col==3:
+      col4.append(toAssess[row][col])
+    elif col==4:
+      col5.append(toAssess[row][col])
+    elif col==5:
+      col6.append(toAssess[row][col])
+    elif col==6:
+      col7.append(toAssess[row][col])
+    elif col==7:
+      col8.append(toAssess[row][col])
+    elif col==8:
+      col9.append(toAssess[row][col])
 invertedShouldBeCorrect.append(col1)
 invertedShouldBeCorrect.append(col2)
 invertedShouldBeCorrect.append(col3)
@@ -117,15 +121,15 @@ invertedNew=[]
 
 for row in range(9):  
   for col in range(9):         #row is 0. 
+    if toAssess[row][col] == 0:
+      print("The digit is not an integer from 1 to 9, and so it is invalid")
     if toAssess[row][col] in checkedNum:
       print("2 of the same number is in this row")
       break
     elif toAssess[row][col] in noZero:   #if it's not a zero
       checkedNum.append(toAssess[row][col])
-  # print(checkedNum) # printed 5, from [0][0]
   invertedNew.append(checkedNum)
   checkedNum=[]
-# print(invertedNew)
 
 if invertedNew==toAssess:
   print("Columns are all valid")
@@ -156,6 +160,7 @@ for i in range(9):
       pop1.append(toAssess[i][j])
     elif j==2:
       pop1.append(toAssess[i][j])
+
 #trying to not require pop method
 for k in range(3):    #3 for pop1, pop2, pop3
   for m in range(9):  #9 so each of pop1, pop2, pop3 gets 9
@@ -224,6 +229,8 @@ boxesNew=[]
 
 for row in range(9):  
   for col in range(9):         #row is 0. 
+    if toAssess[row][col] == 0:
+      print("The digit is not an integer from 1 to 9, and so it is invalid")
     if toAssess[row][col] in checkedNum:
       print("2 of the same number is in this row")
       break

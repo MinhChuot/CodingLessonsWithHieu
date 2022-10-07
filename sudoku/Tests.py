@@ -73,6 +73,18 @@
 
 ######################################################################################
 shouldBeCorrect=[
+  [5, 3, 4, 6, 7, 8, 9, 1, 2],
+  [6, 7, 2, 1, 9, 5, 3, 4, 8],
+  [1, 9, 8, 3, 4, 2, 5, 6, 7],
+  [8, 5, 9, 7, 6, 1, 4, 2, 3],
+  [4, 2, 6, 8, 5, 3, 7, 9, 1],
+  [7, 1, 3, 9, 2, 4, 8, 5, 6],
+  [9, 6, 1, 5, 3, 7, 2, 8, 4],
+  [2, 8, 7, 4, 1, 9, 6, 3, 5],
+  [3, 4, 5, 2, 8, 6, 1, 7, 9]
+]
+
+shouldBeIncorrect=[
   [5, 3, 4, 6, 7, 8, 9, 1, 2], 
   [6, 7, 2, 1, 9, 0, 3, 4, 8],
   [1, 0, 0, 3, 4, 2, 5, 6, 0],
@@ -83,57 +95,63 @@ shouldBeCorrect=[
   [2, 8, 7, 4, 1, 9, 6, 3, 5],
   [3, 0, 0, 4, 8, 1, 1, 7, 9]
 ]
-# [
-#   [5, 3, 4, 6, 7, 8, 9, 1, 2],
-#   [6, 7, 2, 1, 9, 5, 3, 4, 8],
-#   [1, 9, 8, 3, 4, 2, 5, 6, 7],
-#   [8, 5, 9, 7, 6, 1, 4, 2, 3],
-#   [4, 2, 6, 8, 5, 3, 7, 9, 1],
-#   [7, 1, 3, 9, 2, 4, 8, 5, 6],
-#   [9, 6, 1, 5, 3, 7, 2, 8, 4],
-#   [2, 8, 7, 4, 1, 9, 6, 3, 5],
-#   [3, 4, 5, 2, 8, 6, 1, 7, 9]
-# ]
-
-# shouldBeIncorrect=[
-#   [5, 3, 4, 6, 7, 8, 9, 1, 2], 
-#   [6, 7, 2, 1, 9, 0, 3, 4, 8],
-#   [1, 0, 0, 3, 4, 2, 5, 6, 0],
-#   [8, 5, 9, 7, 6, 1, 0, 2, 0],
-#   [4, 2, 6, 8, 5, 3, 7, 9, 1],
-#   [7, 1, 3, 9, 2, 4, 8, 5, 6],
-#   [9, 0, 1, 5, 3, 7, 2, 1, 4],
-#   [2, 8, 7, 4, 1, 9, 6, 3, 5],
-#   [3, 0, 0, 4, 8, 1, 1, 7, 9]
-# ]
 toAssess=shouldBeCorrect
+####################
+# checkedNum=[]   #number we checked already can't appear again, so if it's checked any more times after the 1st, it's wrong
+# noZero=[1,2,3,4,5,6,7,8,9]
+new=[]
 
 #***********Checking Rows***************** 
-toAssess=shouldBeCorrect
-new=[]
-checkedNum=[]   #number we checked already can't appear again, so if it's checked any more times after the 1st, it's wrong
-noZero=[1,2,3,4,5,6,7,8,9]
-
-# ***Checking rows***
-for row in range(9):  
-  for col in range(9):         #row is 0. 
-    if toAssess[row][col] == 0:
-      print("The digit is not an integer from 1 to 9, and so it is invalid")
-    if toAssess[row][col] in checkedNum:
-      print("2 of the same number is in this row")
-      break
-    elif toAssess[row][col] in noZero:   #if it's not a zero
-      checkedNum.append(toAssess[row][col])
-      # print(checkedNum) # printed 5, from [0][0]
-  new.append(checkedNum)
-  # print(new)
+def checkRows(tA):
   checkedNum=[]
-if new==toAssess:
-  print("Rows are all valid")
-else:
-  print("There is/are one or more invalid row/s")
+  noZero=[1,2,3,4,5,6,7,8,9]
+  new=[]
+  # print(checkedNum)
+  for row in range(9):  
+    for col in range(9):         #row is 0. 
+      # if tA[row][col] == 0:
+      #   print("The digit is not an integer from 1 to 9, and so it is invalid")
+      # print(tA[row][col])
+      # print(checkedNum)
+      # print(noZero)
+      if tA[row][col] in checkedNum:
+        print("2 of the same number is in this row")
+        break
+      elif tA[row][col] in noZero:   #if it's not a zero
+        checkedNum.append(tA[row][col])
+        # print(checkedNum) # printed 5, from [0][0]
+    new.append(checkedNum)
+    # print(new) #once every "9 times" for 9 times
+    checkedNum=[]
+  if new==toAssess:
+    print("Rows are all valid")
+  else:
+    print("There is/are one or more invalid row/s")
+    # return new
+
+# def feedback(new):
+  # if new==toAssess:
+  #   print("Rows are all valid")
+  # else:
+  #   print("There is/are one or more invalid row/s")
+
+checkRows(toAssess)
+# feedback(new) #this new is empty
+
+# checkRows(shouldBeCorrect)
+# checkRows(shouldBeIncorrect)
+
+
+# exit(1) #dont forget about this
+
+
+# Presentable Output:
+# There is/are one or more invalid row/s
+# the new[] in feedback(new) is empty and NOT THE SAME new[] is inside checkRows(). THEREFORE,
+# newGrid takes the empty new[] outside checkRows() instead of the new[] inside it
 
 # ***Checking columns***
+invertedShouldBeCorrect=[]
 col1=[]
 col2=[]
 col3=[]
@@ -143,7 +161,6 @@ col6=[]
 col7=[]
 col8=[]
 col9=[]
-invertedShouldBeCorrect=[]
 
 # invertedShouldBeCorrect=[
 # [],[],[],[],[],[],[],[],[]
@@ -170,6 +187,16 @@ for i in range(9):  #************ Find a way to REUSE col1[]***************
     elif j==8:
       col9.append(toAssess[i][j])
 
+# print(col1)
+# print(col2)
+# print(col3)
+# print(col4)
+# print(col5)
+# print(col6)
+# print(col7)
+# print(col8)
+# print(col9)
+
 # 1st try at simplifying things for checking columns
 #  for i in range(9):  #************ Find a way to REUSE col1[]***************
 #   for j in range(9):
@@ -182,16 +209,6 @@ for i in range(9):  #************ Find a way to REUSE col1[]***************
 #       col1.append(toAssess[i][j])
 #     elif j==2:
 #       col1.append(toAssess[i][j])
-
-# print(col1)
-# print(col2)
-# print(col3)
-# print(col4)
-# print(col5)
-# print(col6)
-# print(col7)
-# print(col8)
-# print(col9)
 
 invertedShouldBeCorrect.append(col1)
 invertedShouldBeCorrect.append(col2)
@@ -219,28 +236,32 @@ invertedShouldBeCorrect.append(col9)
 
 toAssess=invertedShouldBeCorrect
 
-invertedNew=[]
+# invertedNew=[]
 
-for row in range(9):  
-  for col in range(9):         #row is 0. 
-    if toAssess[row][col] == 0:
-      print("The digit is not an integer from 1 to 9, and so it is invalid")
-    if toAssess[row][col] in checkedNum:
-      print("2 of the same number is in this row")
-      break
-    elif toAssess[row][col] in noZero:   #if it's not a zero
-      checkedNum.append(toAssess[row][col])
-  # print(checkedNum) # printed 5, from [0][0]
-  invertedNew.append(checkedNum)
-  checkedNum=[]
+# for row in range(9):  
+#   for col in range(9):         #row is 0. 
+#     # if toAssess[row][col] == 0:
+#     #   print("The digit is not an integer from 1 to 9, and so it is invalid")
+#     if toAssess[row][col] in checkedNum:
+#       print("2 of the same number is in this row")
+#       break
+#     elif toAssess[row][col] in noZero:   #if it's not a zero
+#       checkedNum.append(toAssess[row][col])
+#   # print(checkedNum) # printed 5, from [0][0]
+#   invertedNew.append(checkedNum)
+#   checkedNum=[]
 # print(invertedNew)
-if invertedNew==toAssess:
-  print("Columns are all valid")
-else:
-  print("There is/are one or more invalid column/s")
+
+# if invertedNew==toAssess:
+#   print("Columns are all valid")
+# else:
+#   print("There is/are one or more invalid column/s")
 
 
-# **************Checking Boxes********************
+checkRows(invertedShouldBeCorrect)
+
+
+# ******************************************Checking Boxes****************************************
 # for i in range(9):
 #   for j in range(9):
 #     if j==0:
@@ -460,23 +481,23 @@ boxesShouldBeCorrect.append(box9)
 # [2, 8, 4, 6, 3, 5, 1, 7, 9]]
 
 toAssess=boxesShouldBeCorrect
-boxesNew=[]
-
-for row in range(9):  
-  for col in range(9):         #row is 0. 
-    if toAssess[row][col] == 0:
-      print("The digit is not an integer from 1 to 9, and so it is invalid")
-    if toAssess[row][col] in checkedNum:
-      print("2 of the same number is in this row")
-      break
-    elif toAssess[row][col] in noZero:   #if it's not a zero
-      checkedNum.append(toAssess[row][col])
-  # print(checkedNum) # printed 5, from [0][0]
-  boxesNew.append(checkedNum)
-  checkedNum=[]
+# boxesNew=[]
+checkRows(boxesShouldBeCorrect)
+# for row in range(9):  
+#   for col in range(9):         #row is 0. 
+#     # if toAssess[row][col] == 0:
+#     #   print("The digit is not an integer from 1 to 9, and so it is invalid")
+#     if toAssess[row][col] in checkedNum:
+#       print("2 of the same number is in this row")
+#       break
+#     elif toAssess[row][col] in noZero:   #if it's not a zero
+#       checkedNum.append(toAssess[row][col])
+#   # print(checkedNum) # printed 5, from [0][0]
+#   boxesNew.append(checkedNum)
+#   checkedNum=[]
 # print(invertedNew)
 
-if boxesNew==toAssess:
-  print("Mini-squares are all valid")
-else:
-  print("There is/are one or more invalid mini-square/s")
+# if boxesNew==toAssess:
+#   print("Mini-squares are all valid")
+# else:
+#   print("There is/are one or more invalid mini-square/s")

@@ -54,8 +54,8 @@ noZero=[1,2,3,4,5,6,7,8,9]
 # ***Checking rows***
 for row in range(9):  
   for col in range(9):         #row is 0. 
-    if toAssess[row][col] == 0:
-      print("The digit is not an integer from 1 to 9, and so it is invalid")
+    # if toAssess[row][col] == 0:
+    #   print("The digit is not an integer from 1 to 9, and so it is invalid")
     if toAssess[row][col] in checkedNum:
       print("2 of the same number is in this row")
       break
@@ -65,10 +65,10 @@ for row in range(9):
   new.append(checkedNum)
   # print(new)
   checkedNum=[]
-if new==toAssess:
-  print("Rows are all valid")
-else:
-  print("There is/are one or more invalid row/s")
+  if new==toAssess:
+    print("Rows are all valid")
+  else:
+    print("There is/are one or more invalid row/s")
 
 # ***Checking columns*** #is there a way to/is it necessary to automate more of the code below with loops?
 col1=[]
@@ -121,8 +121,8 @@ invertedNew=[]
 
 for row in range(9):  
   for col in range(9):         #row is 0. 
-    if toAssess[row][col] == 0:
-      print("The digit is not an integer from 1 to 9, and so it is invalid")
+    # if toAssess[row][col] == 0:
+    #   print("The digit is not an integer from 1 to 9, and so it is invalid")
     if toAssess[row][col] in checkedNum:
       print("2 of the same number is in this row")
       break
@@ -154,47 +154,47 @@ box9=[]
 
 for i in range(9):  
   for j in range(9):
-    if j==0:
+    if j==0:                          # 1st column of 1st 3x3 column
       pop1.append(toAssess[i][j])
-    elif j==1:
+    elif j==1:                        # 2nd column of 1st 3x3 column
       pop1.append(toAssess[i][j])
-    elif j==2:
+    elif j==2:                        # 3rd column of 1st 3x3 column
       pop1.append(toAssess[i][j])
 
 #trying to not require pop method
-for k in range(3):    #3 for pop1, pop2, pop3
-  for m in range(9):  #9 so each of pop1, pop2, pop3 gets 9
-    if len(box1)<9:  #
-      box1.append(pop1[m])
-    elif len(box1)==9 and len(box2)<9: #
-      box2.append(pop1[m+9])
-    elif len(box2)==9 and len(box3)<9:  #
-      box3.append(pop1[m+18])
-
+for k in range(3):    #3 for box1, box2 and box3
+  for m in range(9):  #9 so each of box gets 9
+    if len(box1)<9:   #if box 1 is empty or unfilled to 9
+      box1.append(pop1[m])              #append 1st 9 slots of pop1 to box1
+    elif len(box1)==9 and len(box2)<9: #if box1 is full and box2 is empty or unfilled to 9
+      box2.append(pop1[m+9])            #append 2nd 9 slots of pop1 to box2
+    elif len(box2)==9 and len(box3)<9:  #if box2 is full and box3 is empty or unfilled to 9
+      box3.append(pop1[m+18])           #append 3rd 9 slots of pop1 to box2
+############################################################
 for i in range(9):  
   for j in range(9):
-    if j==3:
+    if j==3:                        # 1st column of 2nd 3x3 column
       pop2.append(toAssess[i][j])
-    elif j==4:
+    elif j==4:                      # 2nd column of 2nd 3x3 column
       pop2.append(toAssess[i][j])
-    elif j==5:
+    elif j==5:                      
       pop2.append(toAssess[i][j])
 # print(pop2)
 # Output
 # [6, 7, 8, 1, 9, 5, 3, 4, 2, 7, 6, 1, 8, 5, 3, 9, 2, 4, 5, 3, 7, 4, 1, 9, 2, 8, 6]
 
-for k in range(3):    #3 for pop2, pop2, pop3
-  for m in range(9):  #9 so each of pop2, pop2, pop3 gets 9
+for k in range(3):    #3 for box4, box5 and box6
+  for m in range(9):  #9 so each of box gets 9
     if len(box4)<9:  #
       box4.append(pop2[m])
     elif len(box4)==9 and len(box5)<9: #
       box5.append(pop2[m+9])
     elif len(box5)==9 and len(box6)<9:  #
       box6.append(pop2[m+18])
-
+##############################################################
 for i in range(9):  
   for j in range(9):
-    if j==6:
+    if j==6:                        # 1st column of 3rd 3x3 column
       pop3.append(toAssess[i][j])
     elif j==7:
       pop3.append(toAssess[i][j])
@@ -204,15 +204,15 @@ for i in range(9):
 # Output:
 # [9, 1, 2, 3, 4, 8, 5, 6, 7, 4, 2, 3, 7, 9, 1, 8, 5, 6, 2, 8, 4, 6, 3, 5, 1, 7, 9]
 
-for k in range(3):    #3 for pop3, pop2, pop3
-  for m in range(9):  #9 so each of pop3, pop2, pop3 gets 9
+for k in range(3):    #3 for box7, box8 and box9
+  for m in range(9):  #9 so each box gets 9
     if len(box7)<9:  #
       box7.append(pop3[m])
     elif len(box7)==9 and len(box8)<9: #
       box8.append(pop3[m+9])
     elif len(box8)==9 and len(box9)<9:  #
       box9.append(pop3[m+18])
-
+############################################################
 boxesShouldBeCorrect=[]
 boxesShouldBeCorrect.append(box1)
 boxesShouldBeCorrect.append(box2)
@@ -229,8 +229,8 @@ boxesNew=[]
 
 for row in range(9):  
   for col in range(9):         #row is 0. 
-    if toAssess[row][col] == 0:
-      print("The digit is not an integer from 1 to 9, and so it is invalid")
+    # if toAssess[row][col] == 0:
+    #   print("The digit is not an integer from 1 to 9, and so it is invalid")
     if toAssess[row][col] in checkedNum:
       print("2 of the same number is in this row")
       break

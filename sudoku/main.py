@@ -35,36 +35,24 @@ shouldBeIncorrect=[
 #*******************************Checking Rows************************************ 
 toAssess=shouldBeCorrect
 # toAssess=shouldBeIncorrect
-# new=[]
-# checkedNum=[]   #number we checked already can't appear again, so if it's checked any more times after the 1st, it's wrong
-# noZero=[1,2,3,4,5,6,7,8,9]
 
 def checkRows(tA):
   checkedNum=[]
   noZero=[1,2,3,4,5,6,7,8,9]
   new=[]
-  # print(checkedNum)
   for row in range(9):  
-    for col in range(9):         #row is 0. 
-      # if tA[row][col] == 0:
-      #   print("The digit is not an integer from 1 to 9, and so it is invalid")
-      # print(tA[row][col])
-      # print(checkedNum)
-      # print(noZero)
+    for col in range(9):          
       if tA[row][col] in checkedNum:
         print("No") #2 of the same number is in this row
         break
-      elif tA[row][col] in noZero:   #if it's not a zero
+      elif tA[row][col] in noZero:   
         checkedNum.append(tA[row][col])
-        # print(checkedNum) # printed 5, from [0][0]
     new.append(checkedNum)
-    # print(new) #once every "9 times" for 9 times
     checkedNum=[]
   if new==toAssess:
     print("Yes") #Rows are all valid
   else:
     print("No") #There is/are one or more invalid row/column/mini-square/s
-    # return new
 
 checkRows(toAssess)
 
@@ -116,18 +104,18 @@ checkRows(invertedShouldBeCorrect)
 def getMiniSquare(squareNum, grid):
   out=[]
   if squareNum==1:   #if i+1==1, a.k.a. i==0
-    for row in range(squareNum-squareNum,3*squareNum): # (squareNum-1, squareNum+2)-> same as 4's row
-      for col in range(squareNum-squareNum, 3*squareNum): # (squareNum-1, squareNum+2)
+    for row in range(squareNum-squareNum,3*squareNum): 
+      for col in range(squareNum-squareNum, 3*squareNum): 
         out.append(grid[row][col])
     return out
   if squareNum==2:  #if i+1==2, a.k.a. i==1
-    for row in range(squareNum-squareNum,squareNum+1): # (squareNum-2, squareNum+1)-> same as 5's row 
-      for col in range(squareNum+1, 3*squareNum):      # (squareNum+1, squareNum+4)
+    for row in range(squareNum-squareNum,squareNum+1):  
+      for col in range(squareNum+1, 3*squareNum):      
         out.append(grid[row][col])
     return out
   if squareNum==3:  #if i+1==3, a.k.a. i==2
-    for row in range(squareNum-3,squareNum):  # same as 6's row ->(squareNum-squareNum, squareNum) 
-      for col in range(2*squareNum, 3*squareNum):     # (squareNum+3, squareNum+6)
+    for row in range(squareNum-3,squareNum):  
+      for col in range(2*squareNum, 3*squareNum):     
         out.append(grid[row][col])
     return out
   if squareNum==4:  #if i+1==4, a.k.a. i==3
@@ -163,10 +151,7 @@ def getMiniSquare(squareNum, grid):
 
 newGrid=[]
 for i in range(9):
-  # x=[]
   x=getMiniSquare(i+1, toAssess) #call/run the function AND get out[] into x in 1 step
   newGrid.append(x)
-# print(newGrid)
-# print(x)
 
 checkRows(toAssess)

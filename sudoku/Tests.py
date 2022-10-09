@@ -136,21 +136,39 @@ def checkRows(tA):
   #   print("There is/are one or more invalid row/s")
 
 checkRows(toAssess)
+
 # feedback(new) #this new is empty
-
-# checkRows(shouldBeCorrect)
-# checkRows(shouldBeIncorrect)
-
-
-# exit(1) #dont forget about this
-
-
 # Presentable Output:
 # There is/are one or more invalid row/s
 # the new[] in feedback(new) is empty and NOT THE SAME new[] is inside checkRows(). THEREFORE,
 # newGrid takes the empty new[] outside checkRows() instead of the new[] inside it
 
-# ***Checking columns***
+# checkRows(shouldBeCorrect)
+# checkRows(shouldBeIncorrect)
+
+
+# for row in range(9):  
+#   for col in range(9):         #row is 0. 
+#     # if toAssess[row][col] == 0:
+#     #   print("The digit is not an integer from 1 to 9, and so it is invalid")
+#     if toAssess[row][col] in checkedNum:
+#       print("2 of the same number is in this row")
+#       break
+#     elif toAssess[row][col] in noZero:   #if it's not a zero
+#       checkedNum.append(toAssess[row][col])
+#       # print(checkedNum) # printed 5, from [0][0]
+#   new.append(checkedNum)
+#   # print(new)
+#   checkedNum=[]
+#   if new==toAssess:
+#     print("Rows are all valid")
+#   else:
+#     print("There is/are one or more invalid row/s")
+
+# exit(1) #dont forget about this
+
+
+# ************************************Checking columns*********************************
 invertedShouldBeCorrect=[]
 col1=[]
 col2=[]
@@ -258,8 +276,8 @@ toAssess=invertedShouldBeCorrect
 #   print("There is/are one or more invalid column/s")
 
 
-checkRows(invertedShouldBeCorrect)
-
+# checkRows(invertedShouldBeCorrect)
+checkRows(toAssess)
 
 # ******************************************Checking Boxes****************************************
 # for i in range(9):
@@ -303,20 +321,15 @@ box6=[]
 box7=[]
 box8=[]
 box9=[]
+boxesShouldBeCorrect=[]
+# j=0
 
-for i in range(9):  
-  for j in range(9):
-    if j==0:
-      pop1.append(toAssess[i][j])
-      # print(pop1)
-      # invertedShouldBeCorrect.append(pop1)
-    elif j==1:
-      pop1.append(toAssess[i][j])
-      # print(pop1)
-      # invertedShouldBeCorrect.append(pop1)
-    elif j==2:
-      pop1.append(toAssess[i][j])
-      # print(pop1)   
+def threeByNine(pop, j):  
+  for i in range(9):  
+    for j in range(9):
+      if j<=2:
+        pop1.append(toAssess[i][j])
+
 # Output:
 # [5]
 # [5, 3]
@@ -378,6 +391,7 @@ for i in range(9):
 # print(box3)
 
 #6th try at checking boxes: trying to not require pop method
+# def getMiniSquares():
 for k in range(3):    #3 for pop1, pop2, pop3
   for m in range(9):  #9 so each of pop1, pop2, pop3 gets 9
     if len(box1)<9:  #
@@ -386,6 +400,12 @@ for k in range(3):    #3 for pop1, pop2, pop3
       box2.append(pop1[m+9])
     elif len(box2)==9 and len(box3)<9:  #
       box3.append(pop1[m+18])
+  # boxesShouldBeCorrect.append(box1)
+  # boxesShouldBeCorrect.append(box2)
+  # boxesShouldBeCorrect.append(box3)
+  # box1=[]
+  # box2=[]
+  # box3=[]
 # print(box1)
 # print(box2)
 # print(box3)
@@ -412,12 +432,9 @@ for k in range(3):    #3 for pop1, pop2, pop3
 
 for i in range(9):  
   for j in range(9):
-    if j==3:
+    if j>2 or j<=5:
       pop2.append(toAssess[i][j])
-    elif j==4:
-      pop2.append(toAssess[i][j])
-    elif j==5:
-      pop2.append(toAssess[i][j])
+
 # print(pop2)
 # Output
 # [6, 7, 8, 1, 9, 5, 3, 4, 2, 7, 6, 1, 8, 5, 3, 9, 2, 4, 5, 3, 7, 4, 1, 9, 2, 8, 6]
@@ -458,7 +475,6 @@ for k in range(3):    #3 for pop3, pop2, pop3
 # print(box8)
 # print(box9)
 
-boxesShouldBeCorrect=[]
 boxesShouldBeCorrect.append(box1)
 boxesShouldBeCorrect.append(box2)
 boxesShouldBeCorrect.append(box3)
@@ -482,7 +498,8 @@ boxesShouldBeCorrect.append(box9)
 
 toAssess=boxesShouldBeCorrect
 # boxesNew=[]
-checkRows(boxesShouldBeCorrect)
+# checkRows(boxesShouldBeCorrect)
+checkRows(toAssess)
 # for row in range(9):  
 #   for col in range(9):         #row is 0. 
 #     # if toAssess[row][col] == 0:

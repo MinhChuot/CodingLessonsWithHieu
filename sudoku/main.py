@@ -98,9 +98,11 @@ invertedShouldBeCorrect.append(col7)
 invertedShouldBeCorrect.append(col8)
 invertedShouldBeCorrect.append(col9)
 
-checkRows(invertedShouldBeCorrect)
+toAssess=invertedShouldBeCorrect
+checkRows(toAssess)
 
 # ********************************** Checking boxes *********************************
+toAssess=shouldBeCorrect
 def getMiniSquare(squareNum, grid):
   out=[]
   if squareNum==1:   #if i+1==1, a.k.a. i==0

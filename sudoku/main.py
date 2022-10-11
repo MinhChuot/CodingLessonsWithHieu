@@ -49,7 +49,7 @@ def checkRows(tA):
         checkedNum.append(tA[row][col])
     new.append(checkedNum)
     checkedNum=[]
-  if new==toAssess:
+  if new==tA: 
     print("Yes") #Rows are all valid
   else:
     print("No") #There is/are one or more invalid row/column/mini-square/s
@@ -57,99 +57,43 @@ def checkRows(tA):
 checkRows(toAssess)
 
 # *******************************Checking columns****************************************
-col1=[]
-col2=[]
-col3=[]
-col4=[]
-col5=[]
-col6=[]
-col7=[]
-col8=[]
-col9=[]
-invertedShouldBeCorrect=[]
+invertedShouldBeCorrect=[
+[],[],[],[],[],[],[],[],[]
+]
 
 for row in range(9):
   for col in range(9):
-    if col==0:
-      col1.append(toAssess[row][col])
-    elif col==1:
-      col2.append(toAssess[row][col])
-    elif col==2:
-      col3.append(toAssess[row][col])
-    elif col==3:
-      col4.append(toAssess[row][col])
-    elif col==4:
-      col5.append(toAssess[row][col])
-    elif col==5:
-      col6.append(toAssess[row][col])
-    elif col==6:
-      col7.append(toAssess[row][col])
-    elif col==7:
-      col8.append(toAssess[row][col])
-    elif col==8:
-      col9.append(toAssess[row][col])
-invertedShouldBeCorrect.append(col1)
-invertedShouldBeCorrect.append(col2)
-invertedShouldBeCorrect.append(col3)
-invertedShouldBeCorrect.append(col4)
-invertedShouldBeCorrect.append(col5)
-invertedShouldBeCorrect.append(col6)
-invertedShouldBeCorrect.append(col7)
-invertedShouldBeCorrect.append(col8)
-invertedShouldBeCorrect.append(col9)
+    invertedShouldBeCorrect[col].append(toAssess[row][col])
 
-toAssess=invertedShouldBeCorrect
-checkRows(toAssess)
+checkRows(invertedShouldBeCorrect)
 
 # ********************************** Checking boxes *********************************
 toAssess=shouldBeCorrect
 def getMiniSquare(squareNum, grid):
   out=[]
-  if squareNum==1:   #if i+1==1, a.k.a. i==0
-    for row in range(squareNum-squareNum,3*squareNum): 
-      for col in range(squareNum-squareNum, 3*squareNum): 
-        out.append(grid[row][col])
-    return out
-  if squareNum==2:  #if i+1==2, a.k.a. i==1
-    for row in range(squareNum-squareNum,squareNum+1):  
-      for col in range(squareNum+1, 3*squareNum):      
-        out.append(grid[row][col])
-    return out
-  if squareNum==3:  #if i+1==3, a.k.a. i==2
-    for row in range(squareNum-3,squareNum):  
-      for col in range(2*squareNum, 3*squareNum):     
-        out.append(grid[row][col])
-    return out
-  if squareNum==4:  #if i+1==4, a.k.a. i==3
-    for row in range(squareNum-1,squareNum+2):            
-      for col in range(squareNum-squareNum, squareNum-1): 
-        out.append(grid[row][col])
-    return out
-  if squareNum==5:  #if i+1==5, a.k.a. i==4
-    for row in range(squareNum-2,squareNum+1):            
-      for col in range(squareNum-2, squareNum+1): 
-        out.append(grid[row][col])
-    return out
-  if squareNum==6:  #if i+1==6, a.k.a. i==5
-    for row in range(squareNum-3,squareNum):            
-      for col in range(squareNum, squareNum+3): 
-        out.append(grid[row][col])
-    return out
-  if squareNum==7:  #if i+1==7, a.k.a. i==6
-    for row in range(squareNum-1,squareNum+2):            
-      for col in range(squareNum-squareNum, squareNum-4): 
-        out.append(grid[row][col])
-    return out
-  if squareNum==8:  #if i+1==8, a.k.a. i==7
-    for row in range(squareNum-2,squareNum+1):            
-      for col in range(squareNum-5, squareNum-2): 
-        out.append(grid[row][col])
-    return out
-  if squareNum==9:  #if i+1==9, a.k.a. i==8
-    for row in range(squareNum-3,squareNum):            
-      for col in range(squareNum-3, squareNum): 
-        out.append(grid[row][col])
-    return out
+  if squareNum in (1,2,3):     
+    rowStart=0
+    rowEnd=3
+  elif squareNum in (4,5,6):
+    rowStart=3
+    rowEnd=6
+  elif squareNum in (7,8,9):
+    rowStart=6
+    rowEnd=9
+  if squareNum in (1,4,7):
+    colStart=0
+    colEnd=3
+  if squareNum in (2,5,8):
+    colStart=3
+    colEnd=6 
+  if squareNum in (3,6,9):
+    colStart=6
+    colEnd=9 
+
+  for row in range(rowStart,rowEnd):
+    for col in range(colStart,colEnd): 
+      out.append(grid[row][col])
+  return out
 
 newGrid=[]
 for i in range(9):

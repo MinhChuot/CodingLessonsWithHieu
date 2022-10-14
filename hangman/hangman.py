@@ -9,13 +9,13 @@ gameOver=10
 answer=input('Write down your hangman guessword: ')
 answerAsList=list(answer)
 for i in range(len(answerAsList)):
-	showAnswer.append("_")
+	showAnswer.append("_") #a list of underscores
 print(f"Your hangman guessword is '{answer}'. We may begin hangman")
 #TODO: handle spaces in the answer, e.g. "long live the king"
 while True:
-	guess=input('Guess a letter or the word, or submit "exit" if you want to close the game:  ') 
+	guess=input('Guess a letter or the word, or submit "exit" if you want to close the game: ') 
 	if guess=="exit":
-		break
+		exit() #previously 'break'
 	if guess==answer:
 		print("You win!")
 		break
@@ -23,8 +23,8 @@ while True:
 		print(guess, 'is correct') 	
 		for i in range(len(answerAsList)):	#'cos we need to CHECK ALL SLOTS in the list
 			if guess==answerAsList[i]: 		#if guess is the same as inside one or more slot/s as we pass by the list
-				showAnswer[i]=guess 		#put the guess in the same slot/s in a different, same-length list
-		print(' '.join(showAnswer)) 	##joins said list elements with space and replace empty elements with underscore, and print
+				showAnswer[i]=guess 		#put the guess in the same slot/s in a different, empty, same-length list
+		print(' '.join(showAnswer)) 	##joins said list elements with space and print
 		if showAnswer==answerAsList:	#if all right guesses are made, aka. showAnswer has been filled up correctly
 			print("Congratulations. You won!")
 			break

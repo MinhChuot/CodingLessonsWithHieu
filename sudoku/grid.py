@@ -35,7 +35,9 @@ class Row:
 # print("Is a vowel") if r5.otherThanSelf("i") else print("is not a vowel")
 # print("Is a vowel") if r5.otherThanSelf("o") else print("is not a vowel")
 # print("Is a vowel") if r5.otherThanSelf("u") else print("is not a vowel")
+# Lines 25-37: attempt at reproducing something in https://www.tutorialspoint.com/self-in-python-class
 
+# https://www.w3schools.com/python/gloss_python_self.asp probably showed why im wrong
 
 r1=Row([2,6,8]) 
 r2=Row([3,5,7,2,4,6,1,9,8])
@@ -47,4 +49,3 @@ print(f"Instance r2:{r2.numbers}") #not calling r1.__init__
 print(f"self.notAVariable just has a 9, so this prints:{r1.notAVariable}")	#the [2,6,8] was passed but not used
 print(r1.has9())
 print(r2.has9())
-

@@ -28,7 +28,7 @@ while True:
 		if showAnswer==answerAsList:	#if all right guesses are made, aka. showAnswer has been filled up correctly
 			print("Congratulations. You won!")
 			break
-	else: #if wrong guess made
+	else: 							#if wrong guess made
 		if guess in doNotRepeat:	#if it's wrong and also same as a previous guess (i.e. is in doNotRepeat)
 			print("You've already made this guess. Make a different guess.")
 		else:	#if it's wrong and not the same as a previous guess

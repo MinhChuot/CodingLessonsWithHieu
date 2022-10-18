@@ -15,7 +15,10 @@
 	# 1st rule should include "...and 8 pawns," at the end only when asking for full board configuration, which is the advanced step
 # print("and 2)The bishops must be on opposite-colored-squares")
 
-validPieces=["n","N","b","B","r","R","q","Q","k","K","p","P"]
+##############################################################################################################################################################################################################################
+validPieces=["n","N","b","B","r","R"]
+validRoyalties=["q","Q","k","K"]
+# validPawns=["p","P"]
 takeBackRank=input("Write down your back rank configuration, e.g.nbbnrqkr or NBBNRQKR, but please do not intermix lower and upper case. Or submit 'exit' to end the program: ")
 if takeBackRank=="exit":
 	exit()
@@ -27,8 +30,8 @@ print(checkValidity)
 # countQ=[]
 # countK=[]
 for i in range(len(checkValidity)):
-	if checkValidity[i] not in validPieces:
-		print("Invalid initial letter of chess piece entered. Terminating program")
+	if checkValidity[i] not in validPieces and checkValidity[i] not in validRoyalties and checkValidity[i] not in validPawns:
+		print("Invalid initial letter/s of chess piece/s entered. Terminating program")
 		exit()
 	# if checkValidity[i]=="n" or checkValidity=="N":
 	# 	countN.append(checkValidity[i])
@@ -43,16 +46,29 @@ for i in range(len(checkValidity)):
 	# 	countQ.append(checkValidity[i])
 	# elif checkValidity[i]=="k" or checkValidity=="K":
 	# 	countK.append(checkValidity[i])
-def checkPieceCount(piecePlace,pieceList,positionNumber):
+def checkPieceCount(pieceInitial,pieceList,positionNumber):
 	count=[]
-	if pieceList[positionNumber]==piecePlace: #if the first/2nd/3rd/etc piece is ... (e.g. "n")
-		count.append(piecePlace)
-		if len(countN)!=2:
-			print("Invalid number of Knights. Exiting program") #how to go back to a scriptline? 
-			exit()
+	if pieceList[positionNumber]==pieceInitial: #if the first/2nd/3rd/etc piece is ... (e.g. "n")
+		count.append(pieceInitial)
+		if pieceInitial in validPieces:
+			if len(count)!=2:
+				print("Invalid number of Knights/Bishops/Rooks. Exiting program") #how to go back to a scriptline? 
+				exit()
+		elif pieceInitial in validRoyalties:
+			if len(count)!=1:
+				print("Invalid number of Queen/King. Exiting program") #how to go back to a scriptline? 
+				exit()
 	# for x in range(y)
 for j in range(len(checkValidity)):
-	x=checkPieceCount(checkValidity[j], checkValidity,j)
+	checkPieceCount(checkValidity[j], checkValidity,j)
+	# x=checkPieceCount(checkValidity[j], checkValidity,j)
+
+# Outputs:
+# Write down your back rank configuration, e.g.nbbnrqkr or NBBNRQKR, but please do not intermix lower and upper case. Or submit 'exit' to end the program: bnnbrqkr
+# ['b', 'n', 'n', 'b', 'r', 'q', 'k', 'r']
+# Invalid number of Knights/Bishops/Rooks. Exiting program
+
+
 # board=[]
 	# 	board.append(checkValidity)
 

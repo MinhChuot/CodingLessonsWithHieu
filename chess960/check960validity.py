@@ -1,84 +1,71 @@
 # position=[
-# ['n','b','b','n','r','q','k','r''] 
-# ['p','p','p','p','p','p','p','p']
-# ['','','','','','','','']	#8
-# ['','','','','','','','']	#8
-# ['','','','','','','','']	#8
-# ['','','','','','','','']	#8
-# ['P','P','P','P','P','P','P','P']
-# ['N','B','B','N','R','Q','K','R']
+# ['N','B','B','N','R','Q','K','R'], 
+# ['P','P','P','P','P','P','P','P'],
+# ['','','','','','','',''],	#8
+# ['','','','','','','',''],	#8
+# ['','','','','','','',''],	#8
+# ['','','','','','','',''],	#8
+# ['p','p','p','p','p','p','p','p'],
+# ['n','b','b','n','r','q','k','r'],
 # ]
-
-
-# print("While following the rules, please input a back rank configuration when prompted.")
-# print("The rules are: 1)there can be only 2 knights, 2 bishops, 2 rooks, 1 queen and 1 King and 8 pawns,")
-	# 1st rule should include "...and 8 pawns," at the end only when asking for full board configuration, which is the advanced step
-# print("and 2)The bishops must be on opposite-colored-squares")
-
 ##############################################################################################################################################################################################################################
+
 validPieces=["n","N","b","B","r","R"]
 validRoyalties=["q","Q","k","K"]
-# validPawns=["p","P"]
-takeBackRank=input("Write down your back rank configuration, e.g.nbbnrqkr or NBBNRQKR, but please do not intermix lower and upper case. Or submit 'exit' to end the program: ")
+validPawns=["p","P"]
+
+# print("While following the rules, please input a back rank configuration when prompted.")
+# print("The rules are: 1)there can be only 2 knights, 2 bishops, 2 rooks, 1 queen and 1 King [and 8 pawns] on each side,")
+	# 1st rule should include "...and 8 pawns," at the end ONLY WHEN asking for full board configuration, which is the advanced step
+# print("and 2)The bishops must be on opposite-colored-squares")
+
+takeBackRank=input("Write down your back rank configuration, e.g.nbbnrqkr or NBBNRQKR (please do not intermix lower and upper case), or submit 'exit' to end the program: ")
 if takeBackRank=="exit":
 	exit()
-checkValidity=list(takeBackRank)
-print(checkValidity)
+checkBackRank=list(takeBackRank)
+print(checkBackRank)
 # countN=[]
 # countB=[]
 # countR=[]
 # countQ=[]
 # countK=[]
-for i in range(len(checkValidity)):
-	if checkValidity[i] not in validPieces and checkValidity[i] not in validRoyalties and checkValidity[i] not in validPawns:
-		print("Invalid initial letter/s of chess piece/s entered. Terminating program")
-		exit()
-	# if checkValidity[i]=="n" or checkValidity=="N":
-	# 	countN.append(checkValidity[i])
-	# 	# if len(countN)!=2:
-	# 	# 	print("Invalid number of Knights. Exiting program") #how to go back to a scriptline? 
+for i in range(len(checkBackRank)):
+	if checkBackRank[i] not in validPieces and checkBackRank[i] not in validRoyalties and checkBackRank[i] not in validPawns:
+		exit("Invalid initial/s of chesspiece/s entered. Terminating program")
+	# if checkBackRank[i]=="n" or checkBackRank=="N":
+	# 	countN.append(checkBackRank[i])
+	# 	# if len(countN)!=2:  
+	# 	# 	print("There needs to be 2 knights. Exiting program") #how to go back to a scriptline? 
 	# 	# 	exit()
-	# elif checkValidity[i]=="b" or checkValidity=="B":
-	# 	countB.append(checkValidity[i])
-	# elif checkValidity[i]=="r" or checkValidity=="R":
-	# 	countR.append(checkValidity[i])
-	# elif checkValidity[i]=="q" or checkValidity=="Q":
-	# 	countQ.append(checkValidity[i])
-	# elif checkValidity[i]=="k" or checkValidity=="K":
-	# 	countK.append(checkValidity[i])
-def checkPieceCount(pieceInitial,pieceList,positionNumber):
+	# elif checkBackRank[i]=="b" or checkBackRank=="B":
+	# 	countB.append(checkBackRank[i])
+	# elif checkBackRank[i]=="r" or checkBackRank=="R":
+	# 	countR.append(checkBackRank[i])
+	# elif checkBackRank[i]=="q" or checkBackRank=="Q":
+	# 	countQ.append(checkBackRank[i])
+	# elif checkBackRank[i]=="k" or checkBackRank=="K":
+	# 	countK.append(checkBackRank[i])
+def checkNumPiece(pieceInitial,pieceList,positionNumber):
 	count=[]
 	if pieceList[positionNumber]==pieceInitial: #if the first/2nd/3rd/etc piece is ... (e.g. "n")
 		count.append(pieceInitial)
-		if pieceInitial in validPieces:
-			if len(count)!=2:
-				print("Invalid number of Knights/Bishops/Rooks. Exiting program") #how to go back to a scriptline? 
-				exit()
-		elif pieceInitial in validRoyalties:
-			if len(count)!=1:
-				print("Invalid number of Queen/King. Exiting program") #how to go back to a scriptline? 
-				exit()
+	if pieceInitial in validPieces:
+		if len(count)!=2:
+			exit("There needs to be 2 Bishops, 2 Knights and 2 Rooks. Exiting program")
+	elif pieceInitial in validRoyalties:
+		if len(count)!=1:
+			print("Invalid number of Queen/King. Exiting program") #how to go back to a scriptline? 
+			exit()	
+
+for j in range(len(checkBackRank)):
+	checkNumPiece(checkBackRank[j], checkBackRank,j)
+
+
 	# for x in range(y)
-for j in range(len(checkValidity)):
-	checkPieceCount(checkValidity[j], checkValidity,j)
-	# x=checkPieceCount(checkValidity[j], checkValidity,j)
+	# x=checkNumPiece(checkBackRank[j], checkBackRank,j)
 
-# Outputs:
-# Write down your back rank configuration, e.g.nbbnrqkr or NBBNRQKR, but please do not intermix lower and upper case. Or submit 'exit' to end the program: bnnbrqkr
-# ['b', 'n', 'n', 'b', 'r', 'q', 'k', 'r']
-# Invalid number of Knights/Bishops/Rooks. Exiting program
-
-
-# board=[]
-	# 	board.append(checkValidity)
 
 # count the knights, bishops, rooks, queen/s and king/s
 	# and for advanced step, count the pawns
-# find the first bishop
-# find the second bishop
-# the bishops' positions are i+1
-# assign the position numbers (i.e. both (i+1)'s) into variables a and b
-# if a>b, then gapBetweenBishops = a-b
-# elif b>a, then gapBetweenBishops = b-a
-# if gapBetweenBishops = 1 or =3 or =5 or =7, then the Bishop Rule has been broken
-# elif =0 or =2 or =4 or =6, then proceed as normal
+
+# check the Bishops

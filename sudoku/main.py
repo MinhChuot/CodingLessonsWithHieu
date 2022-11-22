@@ -63,7 +63,7 @@ invertedShouldBeCorrect=[
 
 for row in range(9):
   for col in range(9):
-    invertedShouldBeCorrect[col].append(toAssess[row][col])
+    invertedShouldBeCorrect[col].append(toAssess[row][col]) #append all elements (i.e.columns) of the nth row to the nth column
 
 checkRows(invertedShouldBeCorrect)
 
